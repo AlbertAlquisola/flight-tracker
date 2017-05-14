@@ -1,0 +1,38 @@
+#!/bin/bash
+
+export NODE_PATH=$NODE_PATH:./:./node_modules:./lib
+
+if [[ -z $NODE_ENV ]]; then
+  export NODE_ENV="development"
+fi
+
+# Redis Config
+if [[ -z $REDIS_HOST ]]; then
+  export REDIS_HOST="flight-tracker-redis"
+fi
+
+if [[ -z $REDIS_PORT ]]; then
+  export REDIS_PORT="6379"
+fi
+
+# MySQL Config
+if [[ -z $MYSQL_HOST ]]; then
+  export MYSQL_HOST="flight-tracker-db"
+fi
+
+if [[ -z $MYSQL_USER ]]; then
+  export MYSQL_USER="root"
+fi
+
+
+if [[ -z $MYSQL_PORT ]]; then
+  export MYSQL_PORT="3306"
+fi
+
+if [[ -z $MYSQL_DB ]]; then
+  export MYSQL_DB="flight-tracker"
+fi
+
+if [[ -z $MYSQL_CONN_LIMIT ]]; then
+  export MYSQL_CONN_LIMIT="100"
+fi
