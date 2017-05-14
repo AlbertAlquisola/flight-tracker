@@ -1,0 +1,9 @@
+dev-secrets
+node_modules
+logs
+build
+npm-debug.log
+.eslintcache
+screenshots
+sentry-backup
+.idea
