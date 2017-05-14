@@ -1,0 +1,48 @@
+{
+  "name": "flight-tracker",
+  "version": "1.0.0",
+  "private": true,
+  "description": "project flight tracker",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev-start": "source ./env/development && node --debug app.js",
+    "inspector": "node-inspector --no-preload",
+    "test:lint": "eslint . --ext .js --ignore-path .gitignore --cache; exit 0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AlbertAlquisola/flight-tracker.git"
+  },
+  "author": "Albert Alquisola",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AlbertAlquisola/flight-tracker/issues"
+  },
+  "homepage": "https://github.com/AlbertAlquisola/flight-tracker#readme",
+  "babel": {
+    "presets": ["env"]
+  },
+  "dependencies": {
+    "async": "^2.4.0",
+    "babel-register": "^6.24.1",
+    "body-parser": "^1.17.1",
+    "compression": "^1.6.2",
+    "connect-redis": "^3.2.0",
+    "cookie-parser": "^1.4.3",
+    "express": "^4.15.2",
+    "express-session": "^1.15.2",
+    "ioredis": "^2.5.0",
+    "lodash": "^4.17.4",
+    "mysql": "^2.13.0",
+    "passport": "^0.3.2",
+    "passport-local": "^1.0.0",
+    "redis": "^2.7.1",
+    "request": "^2.81.0",
+    "winston": "^2.3.1"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-preset-env": "^1.4.0"
+  }
+}
