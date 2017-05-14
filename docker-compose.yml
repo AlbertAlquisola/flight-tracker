@@ -1,0 +1,35 @@
+version: '2'
+
+services:
+  flight-tracker:
+    build:
+      context: .
+      dockerfile: ./docker/Dockerfile.development
+    volumes:
+        - .:/root/flight-tracker
+    ports:
+        # main flight-tracker app
+        - "3000:3000"
+
+        # node-inspector
+        - "8080:8080"
+    links:
+      - flight-tracker-db
+    tty: true
+    stdin_open: true
+    container_name: flight-tracker
+    command: /sbin/my_init
+
+  flight-tracker-db:
+    image: mysql:5.7.14
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+    container_name: flight-tracker-db
+    ports:
+      - "3306:3306"
+
+  flight-tracker-redis:
+    image: redis:3.0.7-alpine
+    container_name: flight-tracker-redis
+    ports:
+      - "6379:6379"
