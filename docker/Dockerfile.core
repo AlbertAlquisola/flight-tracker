@@ -1,0 +1,41 @@
+FROM phusion/baseimage:0.9.18
+MAINTAINER Albert <aalquiso@gmail.com>
+
+ENV DEBIAN_FRONTEND noninteractive
+
+# Setup locale and use bash over sh
+RUN locale-gen en_US en_US.UTF-8 && \
+    dpkg-reconfigure locales && \
+    rm /bin/sh && ln -s /bin/bash /bin/sh
+
+# Install git aws cli and node
+RUN curl -sL https://deb.nodesource.com/setup_7.x | sudo bash - \
+  && apt-get update \
+  && apt-get install -y git awscli nodejs \
+  && apt-get clean \
+  && rm -rf /var/lib/apt/lists/*
+
+# Install mysql client and other tools
+RUN LC_ALL=en_US.UTF-8 apt-add-repository -y ppa:ondrej/mysql-5.7 \
+  && apt-get update \
+  && apt-get install -y \
+    mysql-client \
+    netcat \
+  && apt-get clean \
+  && rm -rf /var/lib/apt/lists/*
+
+# Install an updated npm version and set some configuration
+RUN curl -L https://npmjs.org/install.sh | sh \
+    && npm config set registry https://registry.npmjs.org/ \
+    && npm config set progress=false
+
+# Install node inspector
+RUN npm install node-inspector -g
+
+# install node modules
+COPY package.json /tmp/
+RUN cd /tmp && npm install --no-optional
+RUN mkdir -p /root/flight-tracker && cp -a /tmp/node_modules /root/flight-tracker/
+RUN mkdir -p /root/flight-tracker/logs
+
+WORKDIR /root/flight-tracker
