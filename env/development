@@ -24,7 +24,6 @@ if [[ -z $MYSQL_USER ]]; then
   export MYSQL_USER="root"
 fi
 
-
 if [[ -z $MYSQL_PORT ]]; then
   export MYSQL_PORT="3306"
 fi

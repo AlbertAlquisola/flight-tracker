@@ -28,3 +28,15 @@
 **example**
 `docker push albertalquisola/flight-tracker-core:0.0.1`
 
+# Database How Tos
+**You will be prompted for a password so have it handy**
+How to acccess inside the container
+1. `docker exec -it flight-tracker bash`
+2. `mysql -hflight-tracker-db -uroot -p`
+
+How to access outside the container
+1. `mysql -h127.0.0.1 -uroot -p`
+
+Running a migration or seed script
+`mysql -hflight-tracker-db -uroot -p < scripts/db/${nameOfScript}`
+

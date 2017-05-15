@@ -6,7 +6,7 @@
   "main": "app.js",
   "scripts": {
     "start": "node app.js",
-    "dev-start": "source ./env/development && node --debug app.js",
+    "dev-start": "source ./env/development && source ./env/dev-secrets && node --debug app.js",
     "inspector": "node-inspector --no-preload",
     "test:lint": "eslint . --ext .js --ignore-path .gitignore --cache; exit 0"
   },
@@ -21,7 +21,9 @@
   },
   "homepage": "https://github.com/AlbertAlquisola/flight-tracker#readme",
   "babel": {
-    "presets": ["env"]
+    "presets": [
+      "env"
+    ]
   },
   "dependencies": {
     "async": "^2.4.0",
@@ -37,6 +39,7 @@
     "mysql": "^2.13.0",
     "passport": "^0.3.2",
     "passport-local": "^1.0.0",
+    "password-hash-and-salt": "^0.1.4",
     "redis": "^2.7.1",
     "request": "^2.81.0",
     "winston": "^2.3.1"

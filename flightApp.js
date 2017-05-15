@@ -18,6 +18,7 @@ import controllers from 'controllers';
 import errorHandler from 'util/errorHandler';
 import Logger from 'util/Logger';
 import mw from 'middleware';
+import routes from 'routes';
 
 // setup mysql connection pool
 import'lib/models/database';
@@ -44,19 +45,27 @@ app.use(session);
 app.use(passport.initialize());
 app.use(passport.session());
 
-const passportOptions = { passReqToCallback: true };
-// passport.use('local-login', new Strategy(passportOptions, controllers.user.validateCredentials));
-// passport.use('local-signup', new Strategy(passportOptions, controllers.user.upsertUser));
+const passportOptions = {
+  usernameField: 'email',
+  passwordField: 'password',
+  passReqToCallback: true,
+};
 
-passport.serializeUser((user, callback) => callback(null, user));
+passport.use('local-signup', new Strategy(passportOptions, controllers.user.signup));
+passport.use('local-login', new Strategy(passportOptions, controllers.user.login));
 
-passport.deserializeUser((userInfo, callback) => {
-  controllers.user.getUserInfo(userInfo.id, (err, user) => {
-    user = _.extend({}, user, userInfo);
+passport.serializeUser((id, callback) => {
+  callback(null, id)
+});
 
+passport.deserializeUser((id, callback) => {
+  controllers.user.getUserById(id, (err, user) => {
     return callback(err, user);
   });
 });
+
+// configure our routes
+routes(app, mw, passport);
 
 app.get(
   '/errorTest',
@@ -71,7 +80,7 @@ app.get(
 app.use(errorHandler);
 
 app.listen(config.ports.app, () => {
-  log.info('bootup', `express app listening on port ${config.ports.app}`);
+  console.log('bootup:', `express app listening on port ${config.ports.app}`);
 });
 
 
