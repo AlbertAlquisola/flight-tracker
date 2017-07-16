@@ -49,8 +49,8 @@ Pass all params as query params
 - country (default US)
 - currency (default usd)
 - locale default (en-us)
-- originPlace (required)
-- destinationPlace (required)
+- origin (required)
+- destination (required)
 - inboundDate (default today)
 - outboundDate (default 7 days from today)
 
