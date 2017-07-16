@@ -36,7 +36,21 @@ How to acccess inside the container
 
 How to access outside the container
 1. `mysql -h127.0.0.1 -uroot -p`
-
+s
 Running a migration or seed script
 `mysql -hflight-tracker-db -uroot -p < scripts/db/${nameOfScript}`
+
+Flights Endpoint
+
+Example:
+http://localhost:3000/api/v1/flights?originPlace=sfo&destinationPlace=anywhere
+
+Pass all params as query params
+- country (default US)
+- currency (default usd)
+- locale default (en-us)
+- originPlace (required)
+- destinationPlace (required)
+- inboundDate (default today)
+- outboundDate (default 7 days from today)
 
