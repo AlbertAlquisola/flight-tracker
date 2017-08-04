@@ -51,6 +51,6 @@ Pass all params as query params
 - locale default (en-us)
 - origin (required)
 - destination (required)
-- inboundDate (default today)
-- outboundDate (default 7 days from today)
+- departureDate (default anytime)
+- returnDate (default anytime)
 
