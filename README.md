@@ -40,10 +40,17 @@ s
 Running a migration or seed script
 `mysql -hflight-tracker-db -uroot -p < scripts/db/${nameOfScript}`
 
-Flights Endpoint
+Flights Endpoints
+
+Quotes
 
 Example:
-http://localhost:3000/api/v1/flights?originPlace=sfo&destinationPlace=anywhere
+http://localhost:3000/api/v1/flights/quotes?originPlace=sfo&destinationPlace=anywhere
+
+Routes
+Example:
+
+http://localhost:3000/api/v1/flights/routes?originPlace=sfo&destinationPlace=anywhere
 
 Pass all params as query params
 - country (default US)
