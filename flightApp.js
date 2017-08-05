@@ -2,7 +2,6 @@
  *  Project Flight Tracker
  *
  */
-import _ from 'lodash';
 import bodyParser from 'body-parser';
 import compression from 'compression';
 import ConnectRedis from 'connect-redis';
