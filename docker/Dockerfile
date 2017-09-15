@@ -22,7 +22,6 @@ ENV NODE_PATH /root/flight-tracker/node_modules:/root/flight-tracker/lib:/root/f
 
 # Ports:
 # 3000: flight-tracker endpoints
-# 8080: node-inspector server
-EXPOSE 3000 8080
+EXPOSE 3000
 
 CMD /sbin/my_init -- ./start.sh

@@ -6,8 +6,7 @@
   "main": "app.js",
   "scripts": {
     "start": "node app.js",
-    "dev-start": "source ./env/development && source ./env/dev-secrets && node --debug app.js",
-    "inspector": "node-inspector --no-preload",
+    "dev-start": "source ./env/development && source ./env/dev-secrets && node --inspect=localhost:9229 app.js",
     "test:lint": "eslint . --ext .js --ignore-path .gitignore --cache; exit 0"
   },
   "repository": {

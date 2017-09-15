@@ -10,5 +10,5 @@ RUN curl https://raw.githubusercontent.com/creationix/nvm/v0.25.0/install.sh | b
 
 # Ports:
 # 3000: flight-tracker
-# 8080: node-inspector
-EXPOSE 3000 8080
+# 9229: chrome devtools
+EXPOSE 3000 9229

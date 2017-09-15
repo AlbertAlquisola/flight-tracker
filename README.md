@@ -9,10 +9,11 @@
 3. run `npm run dev-start`
 4. visit localhost:3000/errorTest (should see a predefined json error. if you do, were live!)
 
-# How to start node inspector
+# How to debug with chrome devtools
 1. run `docker exec -it flight-tracker bash` (jump inside the flight-tracker docker container)
-2. run `node-inspector --no-preload`
-3. visit localhost:8080 (node inspector server is running there)
+2. if server is not running already, start it with `npm run dev-start`
+3. in chrome, go to about:inspect
+4. click on remote target link
 
 # Docker
 
@@ -45,12 +46,12 @@ Flights Endpoints
 Quotes
 
 Example:
-http://localhost:3000/api/v1/flights/quotes?originPlace=sfo&destinationPlace=anywhere
+http://localhost:3000/api/v1/flights/quotes?origin=sfo&destination=anywhere
 
 Routes
 Example:
 
-http://localhost:3000/api/v1/flights/routes?originPlace=sfo&destinationPlace=anywhere
+http://localhost:3000/api/v1/flights/routes?origin=sfo&destination=anywhere
 
 Pass all params as query params
 - country (default US)

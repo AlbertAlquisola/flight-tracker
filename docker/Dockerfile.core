@@ -29,9 +29,6 @@ RUN curl -L https://npmjs.org/install.sh | sh \
     && npm config set registry https://registry.npmjs.org/ \
     && npm config set progress=false
 
-# Install node inspector
-RUN npm install node-inspector -g
-
 # install node modules
 COPY package.json /tmp/
 RUN cd /tmp && npm install --no-optional

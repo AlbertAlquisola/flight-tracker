@@ -11,8 +11,8 @@ services:
         # main flight-tracker app
         - "3000:3000"
 
-        # node-inspector
-        - "8080:8080"
+        # chrome devtools
+        - "9229:9229"
     links:
       - flight-tracker-db
     tty: true
