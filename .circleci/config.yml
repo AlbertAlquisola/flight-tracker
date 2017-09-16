@@ -1,0 +1,46 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/node:7.10
+
+    working_directory: ~/root/flight-tracker
+
+    steps:
+      - checkout
+      - setup_remote_docker
+
+      # install aws cli
+      - run:
+          name: Install AWS CLI
+          command: |
+            sudo apt-get install -y python3-pip
+            sudo pip3 install awscli
+
+      # build docker image
+      - run:
+          name: Build flight-tracker Docker image
+          command: |
+            docker build -t flight-tracker ./docker
+
+      # run tests
+      - run:
+          name: run tests
+          command: echo "no tests! yet."
+
+      # deploy to AWS ECR
+      - deploy:
+          name: tag and push built image to ECR
+          command: |
+           login="$(aws ecr get-login --region us-east-2 --no-include-email)"
+            ${login}
+
+            # push every build
+            docker tag flight-tracker 120551073030.dkr.ecr.us-east-2.amazonaws.com/flight-tracker:${CIRCLE_SHA1}
+            docker push 120551073030.dkr.ecr.us-east-2.amazonaws.com/flight-tracker:${CIRCLE_SHA1}
+
+            # if on master, also tag as prod and push
+            if [ "${CIRCLE_BRANCH}" == "master" ]; then
+              docker tag flight-tracker 120551073030.dkr.ecr.us-east-2.amazonaws.com/flight-tracker:production
+              docker push 120551073030.dkr.ecr.us-east-2.amazonaws.com/flight-tracker:production
+            fi

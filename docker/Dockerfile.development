@@ -1,10 +1,6 @@
 FROM albertalquisola/flight-tracker-core:0.0.1
 MAINTAINER Albert <aalquiso@gmail.com>
 
-# copy over startup scripts that will be run on container start
-COPY ./docker/scripts/profile /etc/my_init.d/
-COPY ./docker/scripts/profile /etc/profile.d/
-
 # Install NVM for node version manager
 RUN curl https://raw.githubusercontent.com/creationix/nvm/v0.25.0/install.sh | bash
 
