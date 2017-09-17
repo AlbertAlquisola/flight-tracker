@@ -7,7 +7,7 @@ if [[ -z $NODE_ENV ]]; then
 fi
 
 if [[ -z $S3_URL ]]; then
-  export S3_URL="s3://flight-tracker-main/production/secrets"
+  export S3_URL="s3://flight-tracker-bucket/production/"
 fi
 
 # Redis Config
