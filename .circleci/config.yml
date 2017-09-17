@@ -21,7 +21,7 @@ jobs:
       - run:
           name: Build flight-tracker Docker image
           command: |
-            docker build -t flight-tracker ./docker
+            docker build -t flight-tracker -f ./docker/Dockerfile .
 
       # run tests
       - run:
