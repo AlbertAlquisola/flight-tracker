@@ -36,11 +36,11 @@ jobs:
             ${login}
 
             # push every build
-            docker tag flight-tracker 120551073030.dkr.ecr.us-east-2.amazonaws.com/flight-tracker:${CIRCLE_SHA1}
-            docker push 120551073030.dkr.ecr.us-east-2.amazonaws.com/flight-tracker:${CIRCLE_SHA1}
+            docker tag flight-tracker "${ECR_ENDPOINT}/flight-tracker:${CIRCLE_SHA1}"
+            docker push "${ECR_ENDPOINT}/flight-tracker:${CIRCLE_SHA1}"
 
             # if on master, also tag as prod and push
             if [ "${CIRCLE_BRANCH}" == "master" ]; then
-              docker tag flight-tracker 120551073030.dkr.ecr.us-east-2.amazonaws.com/flight-tracker:production
-              docker push 120551073030.dkr.ecr.us-east-2.amazonaws.com/flight-tracker:production
+              docker tag flight-tracker "${ECR_ENDPOINT}/flight-tracker:production"
+              docker push "${ECR_ENDPOINT}/flight-tracker:production"
             fi
