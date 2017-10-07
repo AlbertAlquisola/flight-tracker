@@ -62,3 +62,7 @@ Pass all params as query params
 - departureDate (default anytime)
 - returnDate (default anytime)
 
+# AWS
+How to ssh into an ec2 instance running our docker containers
+- aws ec2 describe-instances (grab publicDNS)
+- ssh -i ${pem key} ec2-user@${publicDNS}
