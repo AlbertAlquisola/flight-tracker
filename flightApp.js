@@ -20,7 +20,7 @@ import mw from 'middleware';
 import routes from 'routes';
 
 // setup mysql connection pool
-import'lib/models/database';
+import 'lib/models/database';
 
 const app = express();
 const log = new Logger('flightApp.js');
@@ -28,7 +28,7 @@ const log = new Logger('flightApp.js');
 const redisClient = new Redis(config.redis);
 const RedisStore = ConnectRedis(expressSession);
 const session = expressSession({
-  store: new RedisStore({ client : redisClient }),
+  store: new RedisStore({ client: redisClient }),
   secret: 'takin flight',
   resave: true,
   saveUninitialized: true,
@@ -86,5 +86,4 @@ app.use(errorHandler);
 app.listen(config.ports.app, () => {
   console.log('bootup:', `express app listening on port ${config.ports.app}`);
 });
-
 

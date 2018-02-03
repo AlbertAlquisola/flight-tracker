@@ -28,6 +28,11 @@ config.mysql.user = process.env.MYSQL_USER;
 config.mysql.port = process.env.MYSQL_PORT;
 config.mysql.connLimit = process.env.MYSQL_CONN_LIMIT;
 
+// mixpanel config
+config.mixpanel = {};
+config.mixpanel.token = process.env.MIXPANEL_TOKEN;
+config.mixpanel.secret = process.env.MIXPANEL_SECRET;
+
 // error config
 config.defaultStatusCode = 500;
 config.defaultTimeout = 70000;

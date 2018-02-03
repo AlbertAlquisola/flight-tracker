@@ -1,10 +1,10 @@
 {
-  "extends": ["airbnb"],
+  "extends": "airbnb",
 
   "parser": "babel-eslint",
 
   "parserOptions" : {
-    "ecmaVersion": 7,
+    "ecmaVersion": 2017,
     "sourceType": "module",
     "ecmaFeatures": { "jsx": true },
     "experimentalObjectRestSpread": true
@@ -18,28 +18,32 @@
   "plugins": ["react"],
 
   "rules": {
-    "indent": [0, 2, {"SwitchCase": 1 }],
+    "indent": ["error", 2, {"SwitchCase": 1 }],
     "eol-last": 0,
-    "comma-dangle": 0,
+    "comma-dangle": ["error", "always-multiline"],
+    "one-var-declaration-per-line": ["error", "initializations"],
+    "one-var": [1, {"initialized": "never", "uninitialized": "always"}],
     "padded-blocks": 0,
+    "prefer-const": ["error", {"destructuring": "all"}],
     "no-param-reassign": 0,
     "curly": [0, "multi-or-nest"],
     "arrow-body-style": [0, "always"],
     "no-restricted-syntax": 0,
     "global-require": 0,
-    "no-unused-vars": [1, {"args": "none"}],
+    "no-unused-vars": [1, {"vars": "all", "args": "all"}],
     "no-unused-expressions": [2, { "allowTernary": true }],
     "new-cap": 0,
     "quotes": [2, "single", { "allowTemplateLiterals": true }],
     "consistent-return": 0,
-    "no-underscore-dangle": [2, { "allow": ["_json", "__express"] }],
+    "no-underscore-dangle": [2, { "allow": ["_json", "__express", "_id"] }],
     "max-len": [0, { "code": 125 }],
+    "no-use-before-define": ["error", {"functions": false, "classes": true, "variables": true}],
 
     "import/no-unresolved": 0,
     "import/no-extraneous-dependencies": 0,
 
     "react/jsx-boolean-value": [0],
-    "react/jsx-indent": [0, 2],
+    "react/jsx-indent": [2, 2],
     "react/jsx-filename-extension": 0,
     "react/prefer-stateless-function": 0,
     "react/self-closing-comp": 0,
@@ -47,6 +51,9 @@
     "react/jsx-closing-bracket-location": 0,
     "react/jsx-first-prop-new-line": 0,
     "react/jsx-indent-props": 0,
+
+    "jsx-a11y/href-no-hash": "off",
+    "jsx-a11y/anchor-is-valid": ["warn", { "aspects": ["invalidHref"] }],
 
     "import/extensions": 0
   }
