@@ -52,6 +52,7 @@ Routes
 Example:
 
 http://localhost:3000/api/v1/flights/routes?origin=sfo&destination=anywhere
+http://flight-tracker-1816596686.us-east-2.elb.amazonaws.com/api/v1/flights/quotes?origin=sfo&destination=anywhere
 
 Pass all params as query params
 - country (default US)

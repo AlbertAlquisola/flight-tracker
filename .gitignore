@@ -1,4 +1,5 @@
 dev-secrets
+secrets
 node_modules
 logs
 build
@@ -8,3 +9,4 @@ screenshots
 sentry-backup
 .idea
 flight-tracker.pem
+airports
