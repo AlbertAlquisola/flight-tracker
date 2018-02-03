@@ -54,7 +54,7 @@ passport.use('local-signup', new Strategy(passportOptions, controllers.user.sign
 passport.use('local-login', new Strategy(passportOptions, controllers.user.login));
 
 passport.serializeUser((id, callback) => {
-  callback(null, id)
+  callback(null, id);
 });
 
 passport.deserializeUser((id, callback) => {
@@ -69,6 +69,11 @@ routes(app, mw, passport);
 app.get(
   '/errorTest',
   (req, res, next) => { return next(new Error('is the error test working? IT BETTER BE!')); }
+);
+
+app.get(
+  '/healthcheck',
+  (req, res, next) => { return res.sendStatus(200); },
 );
 
 // /*
